@@ -1,0 +1,175 @@
+/* Sfondo del corpo */
+body {
+    font-family: 'Poppins', sans-serif; /* Font accattivante */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Altezza piena dello schermo */
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
+    background: linear-gradient(135deg, #f0e4d7, #e0f7fa); /* Gradiente obliquo */
+}
+
+/* Wrapper e sezione del profilo */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-section {
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-name {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-subtitle {
+    font-size: 18px;
+    color: #777;
+}
+
+/* Container per i pulsanti */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+/* Stile pulsanti */
+.btn {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc; /* Bordo grigio chiaro e sottile */
+    padding: 15px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%; /* Default full-width per mobile */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.btn:hover, .btn:focus {
+    background-color: #e6e6e6; /* Sfondo grigio chiaro in hover o focus */
+    border-color: #bbb;
+}
+
+/* Card di default nascosta */
+.card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100vw - 40px); /* Margine di 20px per lato su dispositivi mobili */
+    height: calc(100vh - 40px); /* Margine di 20px per lato su dispositivi mobili */
+    max-width: 600px;
+    max-height: 80vh; /* Limita l'altezza della card su desktop */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none; /* Nasconde la card di default */
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0; /* Nasconde visivamente per le animazioni */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Mostra la card */
+.card.show {
+    display: flex; /* Cambia il display per mostrare la card */
+    opacity: 1; /* Rende la card visibile */
+    transform: translate(-50%, -50%) scale(1); /* Animazione di apertura */
+}
+
+/* Nascondi la card */
+.card.hide {
+    opacity: 0; /* Nasconde gradualmente la card */
+    transform: translate(-50%, -50%) scale(0.9); /* Riduce la card */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Card responsive */
+@media (max-width: 600px) {
+    .card {
+        width: calc(100vw - 40px); /* Margine di 20px per lato */
+        height: calc(100vh - 40px); /* Margine di 20px per lato */
+        overflow-y: auto; /* Scroll all'interno della card */
+    }
+}
+
+/* Impostazioni specifiche per schermi più grandi */
+@media (min-width: 601px) {
+    .card {
+        width: 50vw; /* 50% dello schermo su desktop */
+        height: 80vh; /* 80% in altezza su schermi più grandi */
+    }
+}
+
+
+/* Stile per il contenuto della card (scrollabile) */
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto; /* Scroll solo per il contenuto lungo */
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Pulsante di chiusura */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ccc; /* Grigio chiaro */
+    color: black;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.close-btn:hover {
+    background-color: #bbb;
+}
+
+/* Regola l'altezza del contenuto */
+.card-content h2 {
+    margin-top: 0;
+}
+
+/* Overlay per chiudere la card cliccando fuori */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+    z-index: 998; /* Sotto le card ma sopra i pulsanti */
+    display: none; /* Nasconde l'overlay di default */
+}
+
+.overlay.show {
+    display: block; /* Mostra l'overlay */
+}
