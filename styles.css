@@ -181,26 +181,6 @@ body {
     margin-top: 0;
 }
 
-/* Overlay con animazione di fade in e fade out */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 998;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out; /* Transizione fluida per il fade in e out */
-}
-
-/* Mostra l'overlay con animazione di fade in */
-.overlay.show {
-    display: block;
-    opacity: 1; /* L'overlay appare con transizione */
-}
-
 div#social a {
     background: transparent;
     border: none;
@@ -231,4 +211,31 @@ div#social {
 
 .option-button:hover {
     background-color: lightgray; /* Sfondo grigio chiaro al passaggio del mouse */
+}
+
+.question-section {
+    position: absolute; /* Sovrapponi la sezione della domanda */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px); /* Aggiunge l'effetto di sfocatura */
+    z-index: 2; /* Assicurati che la domanda sia sopra */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Transizione per l'animazione */
+}
+
+
+#page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7; /* Rendi la sezione del profilo trasparente */
+    z-index: 1; /* Assicurati che la sezione del profilo sia sotto */
+
 }
