@@ -12,8 +12,8 @@
     <link href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all" rel="stylesheet">
 </head>
 <body>
-
-    <div class="wrapper">
+    <div id="page" style="display: none;">
+       <div class="wrapper">
         <div class="profile-section">
             <img src="profile.jpg" alt="Foto profilo" class="profile-pic">
             <p class="profile-name"><strong>Dario Antonacci</strong></p>
@@ -104,10 +104,20 @@
             <p>Contenuti del blog in arrivo...</p>
             <button class="close-btn" onclick="hideCard(5)">X</button>
         </div>
+    </div> 
     </div>
+    
     
     <!-- Overlay che copre l'intera pagina quando una card è aperta -->
     <div id="overlay" class="overlay"></div>
+
+    <div class="question-section" id="questionSection">
+        <h2>Prima di visualizzare, dimmi: perché sei qui?</h2>
+        <div>
+            <button class="option-button" onclick="handleAnswer('curiosità')">Per curiosità</button>
+            <button class="option-button" onclick="handleAnswer('offrire un lavoro')">Per offrire un lavoro</button>
+        </div>
+    </div>
 
 </body>
 </html>

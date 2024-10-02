@@ -216,3 +216,19 @@ div#social {
     justify-content: flex-start;
     align-items: center;
 }
+
+
+.option-button {
+    background-color: white;
+    border: 1px solid lightgray;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: lightgray; /* Sfondo grigio chiaro al passaggio del mouse */
+}

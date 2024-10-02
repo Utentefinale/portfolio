@@ -45,3 +45,14 @@ function hideCard(cardNumber) {
     // Nasconde l'overlay dopo la chiusura della card
     overlay.classList.remove('show');
 }
+
+function handleAnswer(answer) {
+    // Nascondere la sezione della domanda
+    document.getElementById('questionSection').style.display = 'none';
+    
+    // Mostrare la sezione del profilo
+    document.getElementById('page').style.display = 'flex'; // Assicurati che sia visibile come flex per centrare gli elementi
+
+    // Puoi anche fare qualcosa con la risposta, ad esempio loggarla
+    console.log("Risposta dell'utente:", answer);
+}
