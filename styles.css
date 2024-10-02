@@ -23,11 +23,13 @@ body {
 }
 
 .profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
     margin-bottom: 10px;
+    width: 150px; /* Dimensione della foto */
+    height: 150px;
+    border-radius: 50%; /* Rende la foto circolare */
+    object-fit: cover; /* Mantiene il rapporto di aspetto */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombra per effetto sospeso */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione dolce per l'effetto hover */
 }
 
 .profile-name {
@@ -62,6 +64,8 @@ body {
     width: 100%; /* Default full-width per mobile */
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombra per effetto sospeso */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione dolce per l'effetto hover */
 }
 
 .btn:hover, .btn:focus {
@@ -69,39 +73,37 @@ body {
     border-color: #bbb;
 }
 
-/* Card di default nascosta */
+/* Card inizialmente nascosta */
 .card {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100vw - 40px); /* Margine di 20px per lato su dispositivi mobili */
-    height: calc(100vh - 40px); /* Margine di 20px per lato su dispositivi mobili */
+    transform: translate(-50%, -50%) scale(0.8); /* Ridotta e traslata inizialmente */
+    width: calc(100vw - 40px);
+    height: calc(100vh - 40px);
     max-width: 600px;
-    max-height: 80vh; /* Limita l'altezza della card su desktop */
+    max-height: 80vh;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    display: none; /* Nasconde la card di default */
-    flex-direction: column;
-    overflow: hidden;
-    opacity: 0; /* Nasconde visivamente per le animazioni */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: none;
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Transizione per scala e opacità */
 }
 
-/* Mostra la card */
+/* Mostra la card con animazione fluida */
 .card.show {
-    display: flex; /* Cambia il display per mostrare la card */
-    opacity: 1; /* Rende la card visibile */
-    transform: translate(-50%, -50%) scale(1); /* Animazione di apertura */
+    display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Si espande dolcemente */
 }
 
-/* Nascondi la card */
+/* Nasconde la card con animazione di chiusura */
 .card.hide {
-    opacity: 0; /* Nasconde gradualmente la card */
-    transform: translate(-50%, -50%) scale(0.9); /* Riduce la card */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8); /* Riduce la card */
+    transition: transform 0.5s ease-in, opacity 0.5s ease-in; /* Transizione di chiusura */
 }
 
 /* Card responsive */
@@ -158,18 +160,22 @@ body {
     margin-top: 0;
 }
 
-/* Overlay per chiudere la card cliccando fuori */
+/* Overlay con animazione di fade in e fade out */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
-    z-index: 998; /* Sotto le card ma sopra i pulsanti */
-    display: none; /* Nasconde l'overlay di default */
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Transizione fluida per il fade in e out */
 }
 
+/* Mostra l'overlay con animazione di fade in */
 .overlay.show {
-    display: block; /* Mostra l'overlay */
+    display: block;
+    opacity: 1; /* L'overlay appare con transizione */
 }

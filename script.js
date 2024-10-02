@@ -5,15 +5,17 @@ function showCard(cardNumber) {
     // Disabilita lo scroll della pagina
     document.body.style.overflow = 'hidden';
 
-    // Mostra l'overlay
+    // Mostra l'overlay con animazione
     overlay.classList.add('show');
 
-    // Mostra la card
-    card.classList.remove('hide');
-    card.classList.add('show');
-    card.style.display = 'flex'; // Imposta il display su flex per rendere la card visibile
+    // Mostra la card con animazione
+    setTimeout(() => {
+        card.classList.remove('hide');
+        card.classList.add('show');
+        card.style.display = 'flex'; // Cambia il display per rendere la card visibile
+    }, 50); // Ritardo per assicurare il corretto timing dell'animazione
 
-    // Resetta lo scroll della card in alto
+    // Resetta lo scroll della card
     card.scrollTop = 0;
 
     // Aggiunge il listener per chiudere la card cliccando sull'overlay
@@ -28,18 +30,18 @@ function hideCard(cardNumber) {
     const card = document.getElementById('card' + cardNumber);
     const overlay = document.getElementById('overlay');
 
-    // Riabilita lo scroll della pagina
-    document.body.style.overflow = 'auto';
-
     // Nasconde la card con animazione
     card.classList.remove('show');
     card.classList.add('hide');
-    
-    // Attendi la fine dell'animazione prima di nascondere completamente la card
+
+    // Riabilita lo scroll della pagina
+    document.body.style.overflow = 'auto';
+
+    // Nasconde la card completamente dopo l'animazione
     setTimeout(() => {
         card.style.display = 'none';
-    }, 300); // Durata della transizione in ms
+    }, 500); // Durata della transizione (0.5s)
 
-    // Nasconde l'overlay
+    // Nasconde l'overlay dopo la chiusura della card
     overlay.classList.remove('show');
 }
