@@ -43,5 +43,5 @@ function handleAnswer(answer) {
         questionSection.style.display = 'none';
         document.getElementById('page').style.display = 'flex';
         document.getElementById('page').style.opacity = 1;
-    }, 500); // Dura 500ms in base alla transizione CSS
+    }, 200); 
 }

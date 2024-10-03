@@ -20,7 +20,7 @@ body {
 }
 
 .profile-section {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -36,20 +36,20 @@ body {
     object-fit: cover; /* Mantiene il rapporto di aspetto */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombra per effetto sospeso */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione dolce per l'effetto hover */
-    margin: 5px;
+    margin: 15px;
 }
 
 .profile-name {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: bold;
     color: #333;
-    margin: 5px;
+    margin: 0px;
 }
 
 .profile-subtitle {
-    font-size: 18px;
+    font-size: 16px;
     color: #777;
-    margin: 10px;
+    margin: 0px;
 }
 
 /* Container per i pulsanti */
@@ -67,7 +67,7 @@ body {
     color: black;
     border: 1px solid #ccc; /* Bordo grigio chiaro e sottile */
     padding: 15px 20px;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
     width: 100%; /* Default full-width per mobile */
@@ -237,5 +237,5 @@ div#social {
     align-items: center;
     opacity: 0.7; /* Rendi la sezione del profilo trasparente */
     z-index: 1; /* Assicurati che la sezione del profilo sia sotto */
-
+    margin-top: -80px;
 }
