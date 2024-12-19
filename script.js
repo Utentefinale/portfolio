@@ -1,47 +1,36 @@
-function showCard(cardNumber) {
-    const card = document.getElementById('card' + cardNumber);
+count = 0;
+let intervalId = setInterval(() => {
+    slideMenu();
+ }, 1000); 
 
-    // Disabilita lo scroll della pagina
-    document.body.style.overflow = 'hidden';
-
-    // Mostra la card con animazione
+ // Funzione per interrompere il timeout
+function stopTimeout() {
+    clearInterval(intervalId); // Cancella il timeout
+    document.querySelector("#cards").removeEventListener('touchstart', stopTimeout); // Per dispositivi touch
+    document.querySelector("#cards").removeEventListener('mousedown', stopTimeout);
+    console.log('Timeout interrotto!');
+    count = 13;
     setTimeout(() => {
-        card.classList.remove('hide');
-        card.classList.add('show');
-        card.style.display = 'flex'; // Cambia il display per rendere la card visibile
-    }, 50); // Ritardo per assicurare il corretto timing dell'animazione
-
-    // Resetta lo scroll della card
-    card.scrollTop = 0;
-
+        intervalId = setInterval(() => {
+            slideMenu();
+        }, 1000);
+    }, 8000);
 }
 
-function hideCard(cardNumber) {
-    const card = document.getElementById('card' + cardNumber);
-  
-    // Nasconde la card con animazione
-    card.classList.remove('show');
-    card.classList.add('hide');
 
-    // Riabilita lo scroll della pagina
-    document.body.style.overflow = 'auto';
-
-    // Nasconde la card completamente dopo l'animazione
-    setTimeout(() => {
-        card.style.display = 'none';
-    }, 500); // Durata della transizione (0.5s)
-
-}
-
-function handleAnswer(answer) {
-    // Ridurre l'opacità della sezione della domanda per un'animazione di scomparsa
-    const questionSection = document.getElementById('questionSection');
-    questionSection.style.opacity = '0';
-
-    // Aspetta che l'animazione finisca prima di nascondere la sezione
-    setTimeout(() => {
-        questionSection.style.display = 'none';
-        document.getElementById('page').style.display = 'flex';
-        document.getElementById('page').style.opacity = 1;
-    }, 200); 
+function slideMenu(){
+    if(count == 0){
+        document.querySelector("#cards").addEventListener('touchstart', stopTimeout); // Per dispositivi touch
+        document.querySelector("#cards").addEventListener('mousedown', stopTimeout);  // Per mouse/desktop
+    }
+    if(count > 3 && count%3 == 0 && count < 13){
+        const container = document.querySelector("#cards");
+        const slide = document.querySelector(".carousel-card").offsetWidth+20;
+        container.scrollBy({ top: slide, behavior: 'smooth' });
+    }else if(count == 13){
+        count = 0;
+        const container = document.querySelector("#cards");
+        container.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    count++;
 }

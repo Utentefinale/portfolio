@@ -1,241 +1,173 @@
-/* Sfondo del corpo */
+
+
+/* Corpo generale */
 body {
-    font-family: 'Poppins', sans-serif; /* Font accattivante */
     margin: 0;
-    padding: 0;
-    height: 100vh; /* Altezza piena dello schermo */
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #4a90e2, #9013fe);
+    color: #fff;
     display: flex;
-    justify-content: center; /* Centra orizzontalmente */
-    align-items: center; /* Centra verticalmente */
-    background: linear-gradient(135deg, #d6fffc, #cbffd1); /* Gradiente obliquo */
-    margin: 10px;
+    justify-content: center;
 }
 
-/* Wrapper e sezione del profilo */
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+#image {
+    transition: all 1s ease-in-out;
 }
 
-.profile-section {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    align-content: center;
-}
-
-.profile-pic {
-    width: 150px; /* Dimensione della foto */
-    height: 150px;
-    border-radius: 50%; /* Rende la foto circolare */
-    object-fit: cover; /* Mantiene il rapporto di aspetto */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombra per effetto sospeso */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione dolce per l'effetto hover */
-    margin: 15px;
-}
-
-.profile-name {
-    font-size: 22px;
-    font-weight: bold;
-    color: #333;
-    margin: 0px;
-}
-
-.profile-subtitle {
-    font-size: 16px;
-    color: #777;
-    margin: 0px;
-}
-
-/* Container per i pulsanti */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 15px;
-}
-
-/* Stile pulsanti */
-.btn {
-    background-color: white;
-    color: black;
-    border: 1px solid #ccc; /* Bordo grigio chiaro e sottile */
-    padding: 15px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 100%; /* Default full-width per mobile */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    box-sizing: border-box;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombra per effetto sospeso */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione dolce per l'effetto hover */
-    background: rgba(255, 255, 255, 0.7); /* Sfondo bianco con trasparenza */
-    backdrop-filter: blur(10px); /* Sfocatura dello sfondo */
-    border-radius: 15px; /* Rendi i bordi più morbidi */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Ombra per effetto sospeso */
-}
-
-.btn:hover, .btn:focus {
-    background-color: #e6e6e6; /* Sfondo grigio chiaro in hover o focus */
-    border-color: #bbb;
-}
-
-/* Card inizialmente nascosta */
-.card {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8); /* Ridotta e traslata inizialmente */
-    width: calc(100vw - 40px);
-    height: calc(100vh - 40px);
-    max-width: 600px;
-    max-height: 80vh;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    display: none;
-    opacity: 0;
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Transizione per scala e opacità */
-    background: rgba(255, 255, 255, 0.7); /* Sfondo bianco con trasparenza */
-    backdrop-filter: blur(10px); /* Sfocatura dello sfondo */
-    border-radius: 15px; /* Rendi i bordi più morbidi */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Ombra per effetto sospeso */
-}
-
-/* Mostra la card con animazione fluida */
-.card.show {
-    display: flex;
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1); /* Si espande dolcemente */
-}
-
-/* Nasconde la card con animazione di chiusura */
-.card.hide {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8); /* Riduce la card */
-    transition: transform 0.5s ease-in, opacity 0.5s ease-in; /* Transizione di chiusura */
-}
-
-/* Card responsive */
-@media (max-width: 600px) {
-    .card {
-        width: calc(100vw - 40px); /* Margine di 20px per lato */
-        height: calc(100vh - 40px); /* Margine di 20px per lato */
-        overflow-y: auto; /* Scroll all'interno della card */
-    }
-}
-
-/* Impostazioni specifiche per schermi più grandi */
-@media (min-width: 601px) {
-    .card {
-        width: 50vw; /* 50% dello schermo su desktop */
-        height: 80vh; /* 80% in altezza su schermi più grandi */
-    }
-}
-
-
-/* Stile per il contenuto della card (scrollabile) */
-.card-content {
-    padding: 20px;
-    flex-grow: 1;
-    overflow-y: auto; /* Scroll solo per il contenuto lungo */
-    box-sizing: border-box;
-    text-align: left;
-}
-
-/* Pulsante di chiusura */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-    border: none;
+#image img {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background-color: #ccc; /* Grigio chiaro */
-    color: black;
-    font-size: 16px;
-    line-height: 30px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    background: rgba(255, 255, 255, 0.7); /* Sfondo bianco con trasparenza */
-    backdrop-filter: blur(10px); /* Sfocatura dello sfondo */
-    border-radius: 15px; /* Rendi i bordi più morbidi */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Ombra per effetto sospeso */
+    border: 4px solid #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.close-btn:hover {
-    background-color: #bbb;
-}
-
-/* Regola l'altezza del contenuto */
-.card-content h2 {
-    margin-top: 0;
-}
-
-div#social a {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    margin: 0px 10px;
-    font-size: 25px;
-    color: #333
-}
-
-div#social {
+#socials {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    opacity: 0;
+    animation: fadeInSwitchUp 1s ease-in-out forwards 2.5s;
+    -webkit-animation: fadeInSwitchUp 1s linear forwards 2s;
 }
 
-
-.option-button {
-    background-color: white;
-    border: 1px solid lightgray;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+#socials a {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
 }
 
-.option-button:hover {
-    background-color: lightgray; /* Sfondo grigio chiaro al passaggio del mouse */
+#socials a:hover {
+    transform: scale(1.2);
+    color: #ffd700;
 }
 
-.question-section {
-    position: absolute; /* Sovrapponi la sezione della domanda */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
+#name {
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+#role {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #ffd700;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    -webkit-animation: switchDown 1s linear forwards 2s;
+    animation: switchDown 1s linear forwards 2s;
+}
+
+#description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 20px auto;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
     text-align: center;
-    flex-direction: column;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards 2.5s;}
+
+#cards {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards 3s;
+    display: grid;
+    overflow-x: auto;
+    padding: 10px;
+    justify-items: center;
+}
+
+.carousel-card {
+    width: 90%;
+    aspect-ratio: 1/1;
+    background: white;
+    color: #4a90e2;
+    display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(10px); /* Aggiunge l'effetto di sfocatura */
-    z-index: 2; /* Assicurati che la domanda sia sopra */
-    transition: opacity 0.5s ease, visibility 0.5s ease; /* Transizione per l'animazione */
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out;
+    margin: 10px 0px;
+    font-style: italic;
+    text-align: center;
 }
 
+.foresta {
+    background-image: url(https://www.paoline.it/templates/yootheme/cache/9f/paoline-conoscere-la-bibbia-albero-castronovo-O--9f16ef31.webp);
+    color: white;
+}
+
+.sole {
+    background-image: url(https://www.casadicuravillapini.it/upl/cms/images/20190712/100020378_8381.jpg);
+    color: white
+}
 
 #page {
+    position: absolute;
+    top: 30%;
+    -webkit-animation: moving 1s linear forwards 2s;
+    animation: moving 1s linear forwards 2s;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    opacity: 0.7; /* Rendi la sezione del profilo trasparente */
-    z-index: 1; /* Assicurati che la sezione del profilo sia sotto */
-    margin-top: -80px;
-}
+    align-content: center;
+    flex-direction: column;
+  }
+          
+  @-webkit-keyframes moving {
+      from {-webkit-transform: translateY(0px) scale(1);}
+      to {-webkit-transform: translateY(-200px) scale(0.85);}
+  }
+  
+  @keyframes moving {
+      from {transform: translateY(0px) scale(1);}
+      to {transform: translateY(-200px) scale(0.85);}
+  }
+
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+    }
+
+    @keyframes fadeInSwitchUp {
+        from {
+            opacity: 0;
+            -webkit-transform: translateY(0px);
+        }
+        to {
+            opacity: 1;
+            -webkit-transform: translateY(-40px);
+        }
+    }
+
+
+    @keyframes switchUp {
+        from {-webkit-transform: translateY(0px);}
+      to {-webkit-transform: translateY(-100px);}
+    }
+
+    @keyframes switchDown {
+        from {-webkit-transform: translateY(0px);}
+      to {-webkit-transform: translateY(50px);}
+    }
+
+    p{ 
+        margin: 10px;
+    }
+
+    .text {
+        text-align: left;
+        margin-left: 30px;
+        font-size: calc(1vw + 10px);
+        max-width: 100%;
+    }
