@@ -1,36 +1,62 @@
-count = 0;
-let intervalId = setInterval(() => {
-    slideMenu();
- }, 1000); 
+let lan = "EN";
 
- // Funzione per interrompere il timeout
-function stopTimeout() {
-    clearInterval(intervalId); // Cancella il timeout
-    document.querySelector("#cards").removeEventListener('touchstart', stopTimeout); // Per dispositivi touch
-    document.querySelector("#cards").removeEventListener('mousedown', stopTimeout);
-    console.log('Timeout interrotto!');
-    count = 13;
-    setTimeout(() => {
-        intervalId = setInterval(() => {
-            slideMenu();
-        }, 1000);
-    }, 8000);
-}
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // TRANSLATIONS
+    var userLanguage = navigator.language || navigator.userLanguage;
 
-
-function slideMenu(){
-    if(count == 0){
-        document.querySelector("#cards").addEventListener('touchstart', stopTimeout); // Per dispositivi touch
-        document.querySelector("#cards").addEventListener('mousedown', stopTimeout);  // Per mouse/desktop
+    if (userLanguage === 'it' || userLanguage === 'it-IT') {
+        lan = "IT";
+        console.log("Il dispositivo è in italiano.");
     }
-    if(count > 3 && count%3 == 0 && count < 13){
-        const container = document.querySelector("#cards");
-        const slide = document.querySelector(".carousel-card").offsetWidth+20;
-        container.scrollBy({ top: slide, behavior: 'smooth' });
-    }else if(count == 13){
-        count = 0;
-        const container = document.querySelector("#cards");
-        container.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // WORDS START
+    // Array di parole da visualizzare
+    const words = ["DISCRIMINATIONS", "LGBTQ", "RELATIONSHIPS", "PARENTHOOD","PASSIONS","HOBBIES","HEALTH","CAREERS","FRIENDSHIPS","FAMILY","IDENTITY","SEXUALITY"];
+    const container = document.getElementById("words");
+    function createWord(word) {
+        const span = document.createElement("span");
+        span.textContent = word;
+        span.classList.add("word");
+        // Posizionamento casuale
+        span.style.left = Math.random() * 100 + "vw";
+        span.style.top = Math.random() * 100 + "vh";
+        // Durata e ritardo casuale per l'animazione
+        const duration = Math.random() * 3 + 2; // Da 2 a 5 secondi
+        const delay = Math.random() * 10;       // Da 0 a 5 secondi
+        span.style.animationDuration = `${duration}s`;
+        span.style.animationDelay = `${delay}s`;
+        if(span.style.top.slice(0,-2) < 30 || span.style.top.slice(0,-2) > 50)
+            container.appendChild(span);
+        // Rimuovi l'elemento dopo l'animazione
+        setTimeout(() => container.removeChild(span), (duration + delay) * 1000);
     }
-    count++;
-}
+    function spawnWords() {
+    words.forEach(word => createWord(word));
+    }
+    // Genera parole periodicamente
+    setInterval(spawnWords, 2000);
+    // WORDS END
+
+
+    document.querySelector('.toggle-button').addEventListener('click', function () {
+        const text = document.querySelector('#description');
+        const button = this;
+      
+        if (text.classList.contains('expanded')) {
+          text.classList.remove('expanded');
+          button.innerHTML = 'READ MORE';
+          //button.innerHTML = '<i class="fa fa-caret-down"></i>';
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Scorrimento fluido
+          });
+        } else {
+          text.classList.add('expanded');
+          button.innerHTML = 'READ LESS';
+          //button.innerHTML = '<i class="fa fa-caret-up"></i>';
+        }
+      });
+
+});
+

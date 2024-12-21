@@ -1,15 +1,26 @@
 
 
-/* Corpo generale */
 body {
     margin: 0;
     height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(180deg, #4a90e2, #9013fe);
-    color: #fff;
-    display: flex;
+    background-color: #344e41 !important;
+    color: #dad7cd;
+    display: flex !important;
     justify-content: center;
+    background-attachment: fixed !important;
 }
+
+.gradient-overlay {
+    position: fixed; /* Rimane fisso nella viewport */
+    top: 0;
+    left: 0;
+    width: 100%; /* Copre l'intera larghezza */
+    height: 100%; /* Copre l'intera altezza */
+    pointer-events: none; /* Permette di cliccare gli elementi sottostanti */
+    background: linear-gradient(to top, #588157, rgba(138, 43, 226, 0)); /* Gradiente viola */
+    z-index: -1; /* Assicura che sia davanti a tutto */
+  }
 
 #image {
     transition: all 1s ease-in-out;
@@ -53,64 +64,97 @@ body {
 
 #role {
     font-size: 1.2rem;
-    font-weight: 400;
-    color: #ffd700;
+    font-weight: bolder;
+    color: #ffb703;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
     -webkit-animation: switchDown 1s linear forwards 2s;
     animation: switchDown 1s linear forwards 2s;
 }
 
-#description {
+#role::after {
+    content: 'LIFE COACH';
+    opacity: 0;
+    animation: changeText 6s forwards;
+  }
+
+  @keyframes changeText {
+    0%, 50% {
+      content: 'LIFE COACH';
+      opacity: 1;
+    }
+    
+    51%, 100% {
+      content: 'ABOUT ME';
+      opacity: 1;
+    }
+  }
+
+#description-container {
     font-size: 1rem;
     line-height: 1.6;
-    margin: 20px auto;
     color: rgba(255, 255, 255, 0.8);
     max-width: 700px;
-    text-align: center;
+    text-align: justify;
     opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards 2.5s;}
-
-#cards {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards 3s;
-    display: grid;
-    overflow-x: auto;
-    padding: 10px;
-    justify-items: center;
+    animation: fadeIn 1s ease-in-out forwards 2.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
-.carousel-card {
-    width: 90%;
-    aspect-ratio: 1/1;
-    background: white;
-    color: #4a90e2;
+#name {
+    color: #dad7cd;
+}
+#description {
+  transition: max-height 1s ease; /* Animazione per l'espansione */
+  white-space: break-spaces;
+  text-align: justify !important;
+  display: -webkit-box; /* Necessario per il multiline clamp */
+  -webkit-box-orient: vertical; /* Imposta il layout verticale */
+  overflow: hidden; /* Nasconde il testo eccedente */
+  text-overflow: ellipsis; /* Mostra i tre puntini */
+  line-height: 1.6; /* Altezza della linea */
+  -webkit-line-clamp: 3; /* Limita a 2 righe */
+  max-height: 5em;
+}
+
+#description.expanded {
+    -webkit-line-clamp: 70;
+    max-height: 500em;
+  }
+
+
+  .toggle-button {
+    background-color: #588157;
+    color: #dad7cd;
+    border: none;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    margin-top: -7px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
-    font-size: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.5s ease-in-out;
-    margin: 10px 0px;
-    font-style: italic;
-    text-align: center;
-}
+  }
+  
+  .toggle-button:hover {
+    background-color: #588157;
+  }
 
-.foresta {
-    background-image: url(https://www.paoline.it/templates/yootheme/cache/9f/paoline-conoscere-la-bibbia-albero-castronovo-O--9f16ef31.webp);
-    color: white;
-}
 
-.sole {
-    background-image: url(https://www.casadicuravillapini.it/upl/cms/images/20190712/100020378_8381.jpg);
-    color: white
-}
 
 #page {
+    border: 0px solid red;
     position: absolute;
+    width: 100%;
+    height: 150%;
     top: 30%;
     -webkit-animation: moving 1s linear forwards 2s;
     animation: moving 1s linear forwards 2s;
@@ -122,12 +166,12 @@ body {
           
   @-webkit-keyframes moving {
       from {-webkit-transform: translateY(0px) scale(1);}
-      to {-webkit-transform: translateY(-200px) scale(0.85);}
+      to {-webkit-transform: translateY(-245px) scale(0.85);}
   }
   
   @keyframes moving {
       from {transform: translateY(0px) scale(1);}
-      to {transform: translateY(-200px) scale(0.85);}
+      to {transform: translateY(-245px) scale(0.85);}
   }
 
   @keyframes fadeIn {
@@ -158,16 +202,87 @@ body {
 
     @keyframes switchDown {
         from {-webkit-transform: translateY(0px);}
-      to {-webkit-transform: translateY(50px);}
+      to {-webkit-transform: translateY(55px);}
     }
 
     p{ 
+        display: block;
+        text-align: justify;
         margin: 10px;
     }
+ 
+    #carouselExampleControls {
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 1/1;
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards 3s;
+    }
 
-    .text {
+    .item {
+        position: relative;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        aspect-ratio: 1/1 !important;
+    }
+
+    .img {
+        position: absolute; /* Sovrappone l'immagine */
+        width: 100%; /* Adatta l'immagine */
+        height: 100%; /* Adatta l'immagine */
+        object-fit: cover; /* Riempie mantenendo le proporzioni */
+        border-radius: 20px;
+      }
+      
+      .text {
+            margin: 50px;
+            text-align: center;
+            position: relative;
+            color: #dad7cd;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+            font-size: 1.5em;
+      }
+
+      .long-text {
+        background: radial-gradient(circle, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 60%);
+        font-size: 1.2em;
+        white-space: break-spaces;
         text-align: left;
-        margin-left: 30px;
-        font-size: calc(1vw + 10px);
-        max-width: 100%;
+      }
+
+      
+
+    span {
+        opacity: 0;
+        color: lightgray;
+        font-weight: bold;
+        width: 100px;
+        position:absolute;
+    }
+
+    .word {
+        animation: fade 1s ease-in-out infinite;
+    }
+
+    #words {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    @keyframes fade {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.4;
+    }
     }
