@@ -1,288 +1,409 @@
-
-
 body {
-    margin: 0;
-    height: 100vh;
-    font-family: 'Poppins', sans-serif;
-    background-color: #344e41 !important;
-    color: #dad7cd;
-    display: flex !important;
-    justify-content: center;
-    background-attachment: fixed !important;
+  margin: 0;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background-color: #344e41 !important;
+  color: #dad7cd;
+  display: flex !important;
+  justify-content: center;
+  background-attachment: fixed !important;
 }
 
 .gradient-overlay {
-    position: fixed; /* Rimane fisso nella viewport */
-    top: 0;
-    left: 0;
-    width: 100%; /* Copre l'intera larghezza */
-    height: 100%; /* Copre l'intera altezza */
-    pointer-events: none; /* Permette di cliccare gli elementi sottostanti */
-    background: linear-gradient(to top, #588157, rgba(138, 43, 226, 0)); /* Gradiente viola */
-    z-index: -1; /* Assicura che sia davanti a tutto */
-  }
+  position: fixed;
+  /* Rimane fisso nella viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Copre l'intera larghezza */
+  height: 100%;
+  /* Copre l'intera altezza */
+  pointer-events: none;
+  /* Permette di cliccare gli elementi sottostanti */
+  background: linear-gradient(to top, #588157, rgba(138, 43, 226, 0));
+  /* Gradiente viola */
+  z-index: -1;
+  /* Assicura che sia davanti a tutto */
+}
 
 #image {
-    transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 #image img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #dad7cd;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #socials {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    opacity: 0;
-    animation: fadeInSwitchUp 1s ease-in-out forwards 2.5s;
-    -webkit-animation: fadeInSwitchUp 1s linear forwards 2s;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  opacity: 0;
+  animation: fadeInSwitchUp 1s ease-in-out forwards 2.5s;
+  -webkit-animation: fadeInSwitchUp 1s linear forwards 2s;
 }
 
 #socials a {
-    color: #fff;
-    font-size: 1.5rem;
-    text-decoration: none;
-    transition: transform 0.3s, color 0.3s;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: transform 0.3s, color 0.3s;
 }
 
 #socials a:hover {
-    transform: scale(1.2);
-    color: #ffd700;
+  transform: scale(1.2);
+  color: #ffb703;
 }
 
 #name {
-    font-size: 2rem;
-    font-weight: 700;
-    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
 }
 
 #role {
-    font-size: 1.2rem;
-    font-weight: bolder;
-    color: #ffb703;
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-    -webkit-animation: switchDown 1s linear forwards 2s;
-    animation: switchDown 1s linear forwards 2s;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  color: #ffb703;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  -webkit-animation: switchDown 1s linear forwards 2s;
+  animation: switchDown 1s linear forwards 2s;
 }
 
 #role::after {
+  content: 'LIFE COACH';
+  opacity: 0;
+  animation: changeText 6s forwards;
+}
+
+@keyframes changeText {
+
+  0%,
+  50% {
     content: 'LIFE COACH';
-    opacity: 0;
-    animation: changeText 6s forwards;
+    opacity: 1;
   }
 
-  @keyframes changeText {
-    0%, 50% {
-      content: 'LIFE COACH';
-      opacity: 1;
-    }
-    
-    51%, 100% {
-      content: 'ABOUT ME';
-      opacity: 1;
-    }
+  51%,
+  100% {
+    content: 'About me';
+    opacity: 1;
   }
+}
 
 #description-container {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 700px;
-    text-align: justify;
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards 2.5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 700px;
+  text-align: justify;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards 2.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
 
 #name {
-    color: #dad7cd;
+  color: #dad7cd;
 }
+
 #description {
-  transition: max-height 1s ease; /* Animazione per l'espansione */
+  transition: max-height 1s ease;
+  /* Animazione per l'espansione */
   white-space: break-spaces;
   text-align: justify !important;
-  display: -webkit-box; /* Necessario per il multiline clamp */
-  -webkit-box-orient: vertical; /* Imposta il layout verticale */
-  overflow: hidden; /* Nasconde il testo eccedente */
-  text-overflow: ellipsis; /* Mostra i tre puntini */
-  line-height: 1.6; /* Altezza della linea */
-  -webkit-line-clamp: 3; /* Limita a 2 righe */
+  display: -webkit-box;
+  /* Necessario per il multiline clamp */
+  -webkit-box-orient: vertical;
+  /* Imposta il layout verticale */
+  overflow: hidden;
+  /* Nasconde il testo eccedente */
+  text-overflow: ellipsis;
+  /* Mostra i tre puntini */
+  line-height: 1.6;
+  /* Altezza della linea */
+  -webkit-line-clamp: 3;
+  /* Limita a 2 righe */
   max-height: 5em;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
 }
 
 #description.expanded {
-    -webkit-line-clamp: 70;
-    max-height: 500em;
-  }
+  -webkit-line-clamp: 70;
+  max-height: 500em;
+}
 
 
-  .toggle-button {
-    background-color: #588157;
-    color: #dad7cd;
-    border: none;
-    width: 80px;
-    height: 30px;
-    cursor: pointer;
-    border-radius: 15px;
-    font-size: 10px;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-    margin-top: -7px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .toggle-button:hover {
-    background-color: #588157;
-  }
+.toggle-button {
+  background-color: #588157;
+  color: #dad7cd;
+  border: none;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 15px;
+  font-size: 10px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  margin-top: -7px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-button:hover {
+  background-color: #588157;
+}
 
 
 
 #page {
-    border: 0px solid red;
-    position: absolute;
-    width: 100%;
-    height: 150%;
-    top: 30%;
-    -webkit-animation: moving 1s linear forwards 2s;
-    animation: moving 1s linear forwards 2s;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
-  }
-          
-  @-webkit-keyframes moving {
-      from {-webkit-transform: translateY(0px) scale(1);}
-      to {-webkit-transform: translateY(-245px) scale(0.85);}
-  }
-  
-  @keyframes moving {
-      from {transform: translateY(0px) scale(1);}
-      to {transform: translateY(-245px) scale(0.85);}
+  border: 0px solid red;
+  position: absolute;
+  width: 100%;
+  height: 150%;
+  top: 30%;
+  -webkit-animation: moving 1s linear forwards 2s;
+  animation: moving 1s linear forwards 2s;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+@-webkit-keyframes moving {
+  from {
+    -webkit-transform: translateY(0px) scale(1);
   }
 
-  @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-    }
+  to {
+    -webkit-transform: translateY(-245px) scale(0.85);
+  }
+}
 
-    @keyframes fadeInSwitchUp {
-        from {
-            opacity: 0;
-            -webkit-transform: translateY(0px);
-        }
-        to {
-            opacity: 1;
-            -webkit-transform: translateY(-40px);
-        }
-    }
+@keyframes moving {
+  from {
+    transform: translateY(0px) scale(1);
+  }
+
+  to {
+    transform: translateY(-245px) scale(0.85);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInSwitchUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(0px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(-40px);
+  }
+}
 
 
-    @keyframes switchUp {
-        from {-webkit-transform: translateY(0px);}
-      to {-webkit-transform: translateY(-100px);}
-    }
+@keyframes switchUp {
+  from {
+    -webkit-transform: translateY(0px);
+  }
 
-    @keyframes switchDown {
-        from {-webkit-transform: translateY(0px);}
-      to {-webkit-transform: translateY(55px);}
-    }
+  to {
+    -webkit-transform: translateY(-100px);
+  }
+}
 
-    p{ 
-        display: block;
-        text-align: justify;
-        margin: 10px;
-    }
- 
-    #carouselExampleControls {
-        width: 100%;
-        max-width: 500px;
-        aspect-ratio: 1/1;
-        opacity: 0;
-        animation: fadeIn 1s ease-in-out forwards 3s;
-    }
+@keyframes switchDown {
+  from {
+    -webkit-transform: translateY(0px);
+  }
 
-    .item {
-        position: relative;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 100% !important;
-        aspect-ratio: 1/1 !important;
-    }
+  to {
+    -webkit-transform: translateY(55px);
+  }
+}
 
-    .img {
-        position: absolute; /* Sovrappone l'immagine */
-        width: 100%; /* Adatta l'immagine */
-        height: 100%; /* Adatta l'immagine */
-        object-fit: cover; /* Riempie mantenendo le proporzioni */
-        border-radius: 20px;
-      }
-      
-      .text {
-            margin: 50px;
-            text-align: center;
-            position: relative;
-            color: #dad7cd;
-            font-size: 20px;
-            font-weight: bold;
-            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
-            font-size: 1.5em;
-      }
+p {
+  display: block;
+  text-align: justify;
+  margin: 10px;
+}
 
-      .long-text {
-        background: radial-gradient(circle, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 60%);
-        font-size: 1.2em;
-        white-space: break-spaces;
-        text-align: left;
-      }
+#carouselExampleControls {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1/1;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards 3s;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
 
-      
+.item {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  aspect-ratio: 1/1 !important;
+  flex-direction: column;
+}
 
-    span {
-        opacity: 0;
-        color: lightgray;
-        font-weight: bold;
-        width: 100px;
-        position:absolute;
-    }
+.img {
+  position: absolute;
+  /* Sovrappone l'immagine */
+  width: 100%;
+  /* Adatta l'immagine */
+  height: 100%;
+  /* Adatta l'immagine */
+  object-fit: cover;
+  /* Riempie mantenendo le proporzioni */
+  border-radius: 20px;
+  background-size: cover !important;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
 
-    .word {
-        animation: fade 1s ease-in-out infinite;
-    }
+.text {
+  color: white !important;
+  height: 300px;
+  display: flex;
+  /* Imposta l'elemento come un contenitore Flex */
+  align-items: center;
+  /* Allinea il testo verticalmente al centro */
+  justify-content: center;
+  flex: 7;
+  gap: 10px;
+  margin: 50px;
+  text-align: left;
+  padding-left: 10px;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  font-size: 1.3em;
+  font-family: "Merriweather", serif;
+  font-style: italic;
+}
 
-    #words {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
-    }
+.right {
+  flex:1;
+  text-align: right;
+  background: none;
+}
 
-    @keyframes fade {
-    0%, 100% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.4;
-    }
-    }
+.long-text {
+  white-space: break-spaces;
+}
+
+.word {
+  opacity: 0;
+  color: lightgray;
+  font-weight: bold;
+  width: 100px;
+  position: absolute;
+  animation: fade 1s ease-in-out infinite;
+}
+
+#words {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+@keyframes fade {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+
+#socials i {
+  color: #dad7cd;
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    color: #dad7cd;
+    text-shadow: none;
+  }
+
+  50% {
+    color: #ffb703;
+    text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+  }
+}
+
+
+/* Posiziona il pulsante in basso a destra della pagina */
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 25px;
+  width: 250px; /* Larghezza iniziale (pallino) */
+  height: 50px; /* Altezza iniziale (pallino) */
+  position: fixed;
+  bottom: 25px; /* Distanza dal fondo della pagina */
+  left: 50%;  /* Posiziona l'elemento al 50% dalla sinistra */
+  transform: translateX(-50%); 
+  background-color: #344e41; /* Colore verde iniziale */
+  overflow: hidden; /* Nasconde il testo inizialmente */
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-button:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* Icona WhatsApp */
+.whatsapp-button i {
+  font-size: 24px;
+}
+
+/* Testo del pulsante */
+.button-text {
+  opacity: 1; /* Testo nascosto inizialmente */
+  white-space: nowrap;
+  margin-left: 10px;
+}

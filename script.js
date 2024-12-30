@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // WORDS START
     // Array di parole da visualizzare
-    const words = ["DISCRIMINATIONS", "LGBTQ", "RELATIONSHIPS", "PARENTHOOD","PASSIONS","HOBBIES","HEALTH","CAREERS","FRIENDSHIPS","FAMILY","IDENTITY","SEXUALITY"];
+    const words = ["DISCRIMINATIONS", "LGBTQ", "RELATIONSHIPS", "PARENTHOOD","PASSIONS","ADOPTIONS","MENTAL HEALTH","CAREERS","FRIENDSHIPS","FAMILY","IDENTITY","SEXUALITY","MINDFULNESS","WELLBEING"];
     const container = document.getElementById("words");
     function createWord(word) {
         const span = document.createElement("span");
@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if(span.style.top.slice(0,-2) < 30 || span.style.top.slice(0,-2) > 50)
             container.appendChild(span);
         // Rimuovi l'elemento dopo l'animazione
-        setTimeout(() => container.removeChild(span), (duration + delay) * 1000);
+        setTimeout(function() {
+            try { container.removeChild(span) } catch (e) { }
+        }, (duration + delay) * 1000);
     }
     function spawnWords() {
     words.forEach(word => createWord(word));
@@ -39,24 +41,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // WORDS END
 
 
-    document.querySelector('.toggle-button').addEventListener('click', function () {
-        const text = document.querySelector('#description');
-        const button = this;
-      
-        if (text.classList.contains('expanded')) {
-          text.classList.remove('expanded');
-          button.innerHTML = 'READ MORE';
-          //button.innerHTML = '<i class="fa fa-caret-down"></i>';
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth' // Scorrimento fluido
-          });
-        } else {
-          text.classList.add('expanded');
-          button.innerHTML = 'READ LESS';
-          //button.innerHTML = '<i class="fa fa-caret-up"></i>';
-        }
-      });
+    document.querySelector('.toggle-button').addEventListener('click', expand);
+    document.querySelector('#description').addEventListener('click', expand);
+
+    function expand(){
+      const text = document.querySelector('#description');
+      const button = document.querySelector('.toggle-button');
+    
+      if (text.classList.contains('expanded')) {
+        text.classList.remove('expanded');
+        button.innerHTML = 'READ MORE';
+        //button.innerHTML = '<i class="fa fa-caret-down"></i>';
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth' // Scorrimento fluido
+        });
+      } else {
+        text.classList.add('expanded');
+        button.innerHTML = 'READ LESS';
+        //button.innerHTML = '<i class="fa fa-caret-up"></i>';
+      }
+    }
 
 });
 
