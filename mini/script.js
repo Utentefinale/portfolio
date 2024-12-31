@@ -63,5 +63,82 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // MATRIX EFFECT
+    const canvas = document.getElementById('matrix');
+
+    const ctx = canvas.getContext('2d');
+
+    // Imposta le dimensioni del canvas
+
+    canvas.width = window.innerWidth;
+
+    canvas.height = window.innerHeight;
+
+    // Caratteri usati nello stile Matrix
+
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+    const fontSize = 16;
+
+    const columns = canvas.width / fontSize;
+
+    // Array che tiene traccia della posizione di ogni colonna
+
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    // Funzione per disegnare l'effetto
+
+    function draw() {
+
+        // Sfuma lo sfondo per l'effetto scia
+
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Imposta il colore e il font
+
+        ctx.fillStyle = '#0F0'; // Verde Matrix
+
+        ctx.font = `${fontSize}px monospace`;
+
+        // Disegna i caratteri
+
+        drops.forEach((y, index) => {
+
+            const text = letters.charAt(Math.floor(Math.random() * letters.length));
+
+            const x = index * fontSize;
+
+            ctx.fillText(text, x, y * fontSize);
+
+            // Resetta il drop se esce dallo schermo o casualmente
+
+            if (y * fontSize > canvas.height || Math.random() > 0.975) {
+
+                drops[index] = 0;
+
+            }
+
+            drops[index]++;
+
+        });
+
+    }
+
+    // Anima l'effetto
+
+    setInterval(draw, 50);
+
+    // Aggiorna il canvas in caso di resize
+
+    window.addEventListener('resize', () => {
+
+        canvas.width = window.innerWidth;
+
+        canvas.height = window.innerHeight;
+
+    }); 
+
 });
 

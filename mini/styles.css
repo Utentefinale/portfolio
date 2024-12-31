@@ -2,7 +2,7 @@ body {
   margin: 0;
   height: 100vh;
   font-family: 'Poppins', sans-serif;
-  background-color: #344e41 !important;
+  background-color: #2d7eff !important;
   color: #dad7cd;
   display: flex !important;
   justify-content: center;
@@ -20,9 +20,9 @@ body {
   /* Copre l'intera altezza */
   pointer-events: none;
   /* Permette di cliccare gli elementi sottostanti */
-  background: linear-gradient(to top, #588157, rgba(138, 43, 226, 0));
+  background: linear-gradient(to top, #4cabff, rgba(138, 43, 226, 0));
   /* Gradiente viola */
-  z-index: -1;
+  z-index: -2;
   /* Assicura che sia davanti a tutto */
 }
 
@@ -78,7 +78,7 @@ body {
 }
 
 #role::after {
-  content: 'LIFE COACH';
+  content: 'mobile developer';
   opacity: 0;
   animation: changeText 6s forwards;
 }
@@ -87,13 +87,13 @@ body {
 
   0%,
   50% {
-    content: 'LIFE COACH';
+    content: 'mobile developer';
     opacity: 1;
   }
 
   51%,
   100% {
-    content: 'About me';
+    content: 'about me';
     opacity: 1;
   }
 }
@@ -101,7 +101,7 @@ body {
 #description-container {
   font-size: 1rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+  color: #dad7cd;;
   max-width: 700px;
   text-align: justify;
   opacity: 0;
@@ -111,6 +111,7 @@ body {
   justify-content: center;
   flex-direction: column;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 #name {
@@ -132,10 +133,11 @@ body {
   /* Mostra i tre puntini */
   line-height: 1.6;
   /* Altezza della linea */
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   /* Limita a 2 righe */
-  max-height: 5em;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  max-height: 8em;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
 }
 
 #description.expanded {
@@ -145,7 +147,7 @@ body {
 
 
 .toggle-button {
-  background-color: #588157;
+  background-color: #444;
   color: #dad7cd;
   border: none;
   width: 80px;
@@ -255,11 +257,10 @@ p {
 #carouselExampleControls {
   width: 100%;
   max-width: 500px;
-  aspect-ratio: 1/1;
+  aspect-ratio: 2/1;
   opacity: 0;
   animation: fadeIn 1s ease-in-out forwards 3s;
   border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .item {
@@ -268,7 +269,7 @@ p {
   align-items: center !important;
   justify-content: center !important;
   width: 100% !important;
-  aspect-ratio: 1/1 !important;
+  aspect-ratio: 2/1 !important;
   flex-direction: column;
 }
 
@@ -283,7 +284,6 @@ p {
   /* Riempie mantenendo le proporzioni */
   border-radius: 20px;
   background-size: cover !important;
-  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .text {
@@ -406,4 +406,19 @@ p {
   opacity: 1; /* Testo nascosto inizialmente */
   white-space: nowrap;
   margin-left: 10px;
+}
+
+
+/* DARIO */
+canvas {
+  position: fixed;
+  /* Rimane fisso nella viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Copre l'intera larghezza */
+  height: 100%;
+  /* Copre l'intera altezza */
+  pointer-events: none;
+  z-index: -1;
 }
